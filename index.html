@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Mie Gakcoin | Spicy & Delicious - Mie Pedas No. 1</title>
+  <meta name="description"
+    content="Rasakan sensasi Mie Pedas No. 1 di Mie Gakcoin. Vibe industrial modern, tempat nongkrong asik, level pedas nagih, dan dimsum lumer ramah kantong. Buka setiap hari!">
+  <meta name="keywords" content="Mie Gakcoin, Mie Pedas, Dimsum Udang Keju, Kuliner Pedas, Restoran Hits Jakarta">
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:title" content="Mie Gakcoin | Spicy & Delicious - Mie Pedas No. 1">
+  <meta property="og:description"
+    content="Sensasi nongkrong modern dengan vibe warm & cozy. Diracik dengan level pedas nagih dan bahan pilihan berkualitas.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-dark: #0f0f11;
+      --bg-card: #18181b;
+      --bg-surface: #202025;
+      --bg-surface-elevated: #27272e;
+
+      --accent-yellow: #FFB703;
+      --accent-orange: #FB8500;
+      --accent-red: #E63946;
+      --accent-red-glow: #ff2a3b;
+      --accent-green: #10B981;
+
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-neon: rgba(251, 133, 0, 0.35);
+
+      --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: var(--bg-dark);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    img,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY & UTILITIES
+       ========================================================================== */
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+      font-family: var(--font-heading);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .neon-text-orange {
+      color: var(--accent-orange);
+      text-shadow: 0 0 20px rgba(251, 133, 0, 0.4);
+    }
+
+    .neon-text-red {
+      color: var(--accent-red);
+      text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-neon {
+      background: rgba(230, 57, 70, 0.15);
+      border: 1px solid rgba(230, 57, 70, 0.4);
+      color: #ff5263;
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.25);
+    }
+
+    .badge-yellow {
+      background: rgba(255, 183, 3, 0.12);
+      border: 1px solid rgba(255, 183, 3, 0.35);
+      color: var(--accent-yellow);
+    }
+
+    .glass-card {
+      background: rgba(24, 24, 27, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+    }
+
+    /* ==========================================================================
+       PRELOADER / LOADING SCREEN
+       ========================================================================== */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #0f0f11;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .loader-flame {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #FB8500 0%, #E63946 70%, transparent 100%);
+      box-shadow: 0 0 30px #FB8500;
+      animation: pulseGlow 1.5s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    .progress-bar-wrap {
+      width: 260px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #FFB703, #FB8500, #E63946);
+      box-shadow: 0 0 12px #FB8500;
+      transition: width 0.15s ease-out;
+    }
+
+    .progress-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 16px 0;
+      transition: var(--transition-smooth);
+    }
+
+    .site-header.scrolled {
+      padding: 12px 0;
+      background: rgba(15, 15, 17, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 1.4rem;
+      font-family: var(--font-heading);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-emblem {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FFB703, #E63946);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(251, 133, 0, 0.4);
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title .main-text {
+      color: #fff;
+      line-height: 1;
+      font-size: 1.25rem;
+    }
+
+    .brand-title .sub-text {
+      font-size: 0.68rem;
+      color: var(--accent-orange);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    @media (min-width: 900px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-orange);
+      box-shadow: 0 0 8px var(--accent-orange);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-header {
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-header-order {
+      background: linear-gradient(135deg, #FB8500, #E63946);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(230, 57, 70, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-header-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(251, 133, 0, 0.6);
+    }
+
+    .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    @media (min-width: 900px) {
+      .hamburger-btn {
+        display: none;
+      }
+    }
+
+    .hamburger-btn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: var(--transition-smooth);
+    }
+
+    .hamburger-btn.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Menu Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 15, 17, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transform: translateY(-120%);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+      z-index: 99;
+    }
+
+    .mobile-drawer.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-drawer a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ==========================================================================
+       SCROLL-DRIVEN HERO SECTION (CANVAS STICKY SCRUBBER)
+       ========================================================================== */
+    .hero-scroll-container {
+      position: relative;
+      width: 100%;
+      height: 520vh;
+      /* Smooth scrubbing height for Scene 1-3 + Scene 4 sequence */
+      background-color: var(--bg-dark);
+    }
+
+    .hero-sticky-frame {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0f0f11;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      /* Micro zoom transition is handled smoothly via 2d transform / canvas scale */
+      transition: transform 0.08s linear;
+      will-change: transform;
+    }
+
+    /* Dark vignette & industrial gradient overlay */
+    .canvas-overlay-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(15, 15, 17, 0.2) 0%, rgba(15, 15, 17, 0.75) 85%, #0f0f11 100%),
+        linear-gradient(to bottom, rgba(15, 15, 17, 0.7) 0%, transparent 20%, transparent 75%, #0f0f11 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Overlay Scenes Master Container */
+    .hero-overlay-content {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      pointer-events: none;
+    }
+
+    .scene-card {
+      position: absolute;
+      max-width: 580px;
+      width: 100%;
+      padding: 30px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(251, 133, 0, 0.08);
+    }
+
+    .scene-card.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .scene-card h2 {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 800;
+      color: #fff;
+      margin: 12px 0 10px;
+    }
+
+    .scene-card p {
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .scene-cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn-neon-orange {
+      background: linear-gradient(135deg, #FFB703, #FB8500);
+      color: #0f0f11;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 13px 26px;
+      border-radius: 999px;
+      box-shadow: 0 0 25px rgba(251, 133, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-neon-orange:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 35px rgba(251, 133, 0, 0.8);
+    }
+
+    .btn-neon-outline {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 13px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-neon-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+      transform: translateY(-3px);
+    }
+
+    /* Scroll Prompt Indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      z-index: 3;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-hint-wheel {
+      width: 22px;
+      height: 36px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .scroll-hint-wheel::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 7px;
+      background: var(--accent-orange);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--accent-orange);
+      animation: wheelBounce 1.8s infinite;
+    }
+
+    @keyframes wheelBounce {
+
+      0%,
+      20% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+
+      80%,
+      100% {
+        transform: translate(-50%, 14px);
+        opacity: 0;
+      }
+    }
+
+    /* ==========================================================================
+       SECTION 1: FEATURED SIGNATURE MENUS
+       ========================================================================== */
+    .section-padding {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 50px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      font-weight: 800;
+      margin-top: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Menu Filter Tabs */
+    .menu-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #FB8500, #E63946);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+    }
+
+    /* Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .menu-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-neon);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(251, 133, 0, 0.15);
+    }
+
+    .menu-img-wrap {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+      background: #1f1f23;
+    }
+
+    .menu-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .menu-card:hover .menu-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .menu-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .badge-chili {
+      background: linear-gradient(135deg, #E63946, #c1121f);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.45);
+    }
+
+    .badge-bestseller {
+      background: linear-gradient(135deg, #FFB703, #FB8500);
+      color: #0f0f11;
+      box-shadow: 0 4px 12px rgba(251, 133, 0, 0.45);
+    }
+
+    .menu-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .menu-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .menu-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .menu-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    .menu-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .menu-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .spicy-level-indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ff5263;
+    }
+
+    .btn-card-order {
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition-smooth);
+    }
+
+    .menu-card:hover .btn-card-order {
+      background: var(--accent-orange);
+      color: #0f0f11;
+      border-color: var(--accent-orange);
+      box-shadow: 0 4px 14px rgba(251, 133, 0, 0.4);
+    }
+
+    /* ==========================================================================
+       SECTION 2: AMBIENCE & HIGHLIGHTS
+       ========================================================================== */
+    .ambience-section {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, #151518 50%, var(--bg-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ambience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 36px 30px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .highlight-card:hover {
+      border-color: rgba(255, 183, 3, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .highlight-icon-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: rgba(251, 133, 0, 0.1);
+      border: 1px solid rgba(251, 133, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(251, 133, 0, 0.15);
+    }
+
+    .highlight-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .highlight-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Stats Banner */
+    .stats-banner {
+      background: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.3rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      background: linear-gradient(135deg, #FFB703, #FB8500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       SECTION 3: STORE LOCATOR & OPERATING HOURS
+       ========================================================================== */
+    .locator-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 960px) {
+      .locator-grid {
+        grid-template-columns: 1fr 1.3fr;
+      }
+    }
+
+    .outlet-selector-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .status-indicator-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--accent-green);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: pulseGreen 1.5s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% {
+        opacity: 0.6;
+        transform: scale(0.9);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      100% {
+        opacity: 0.6;
+        transform: scale(0.9);
+      }
+    }
+
+    .outlet-nav-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .outlet-tab-item {
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-align: left;
+    }
+
+    .outlet-tab-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .outlet-tab-item.active {
+      background: rgba(251, 133, 0, 0.08);
+      border-color: var(--accent-orange);
+      box-shadow: 0 4px 18px rgba(251, 133, 0, 0.12);
+    }
+
+    .outlet-tab-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .outlet-tab-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .outlet-detail-info {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .info-row svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--accent-orange);
+    }
+
+    /* Map Box */
+    .map-embed-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 420px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .map-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      flex-grow: 1;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg) contrast(95%);
+    }
+
+    .map-actions-bar {
+      padding: 16px 20px;
+      background: #141417;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ==========================================================================
+       SECTION 4: ORDER ONLINE & SOCIAL PROOF
+       ========================================================================== */
+    .order-platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-bottom: 60px;
+    }
+
+    .platform-btn {
+      padding: 20px;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .platform-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .platform-gofood {
+      background: linear-gradient(135deg, #00aa13, #00870f);
+    }
+
+    .platform-grabfood {
+      background: linear-gradient(135deg, #00b14f, #008c3e);
+    }
+
+    .platform-shopeefood {
+      background: linear-gradient(135deg, #ee4d2d, #d03b1d);
+    }
+
+    .platform-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+    }
+
+    .platform-icon {
+      font-size: 2rem;
+    }
+
+    .platform-title {
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .platform-sub {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    /* Social Testimonials Carousel/Grid */
+    .social-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: var(--transition-smooth);
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .user-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFB703, #FB8500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #0f0f11;
+      font-size: 1.1rem;
+    }
+
+    .user-info h4 {
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .user-info span {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .rating-stars {
+      color: #FFB703;
+      font-size: 0.88rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .social-tag {
+      font-size: 0.78rem;
+      color: var(--accent-orange);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .site-footer {
+      background: #09090b;
+      border-top: 1px solid var(--border-subtle);
+      padding: 70px 0 30px;
+      color: var(--text-secondary);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--accent-orange);
+    }
+
+    .social-links-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: var(--transition-smooth);
+    }
+
+    .social-btn:hover {
+      background: var(--accent-orange);
+      color: #0f0f11;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       MODAL: DETAIL MENU & LEVEL PEDAS
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-neon);
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+      transform: scale(0.9);
+      transition: var(--transition-smooth);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-backdrop.open .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .modal-spicy-picker {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 16px 0 24px;
+    }
+
+    .level-btn {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .level-btn.selected {
+      background: var(--accent-red);
+      border-color: #ff5263;
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
+    }
+
+    /* Accessibility reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .scene-card {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       PRELOADER OVERLAY
+       ========================================================================== -->
+  <div id="loader">
+    <div class="loader-logo">
+      <div class="loader-flame"></div>
+      <span>MIE GAKCOIN</span>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text" id="progressText">Menyiapkan Pengalaman Visual (0%)...</div>
+  </div>
+
+  <!-- ==========================================================================
+       SITE HEADER / NAVBAR
+       ========================================================================== -->
+  <header class="site-header" id="mainHeader">
+    <div class="container nav-wrapper">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="Mie Gakcoin Beranda">
+        <div class="logo-emblem">🍜</div>
+        <div class="brand-title">
+          <span class="main-text">MIE GAKCOIN</span>
+          <span class="sub-text">Spicy & Delicious</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Vibe Outlet</a></li>
+        <li><a href="#menu" class="nav-link">Menu Unggulan</a></li>
+        <li><a href="#ambience" class="nav-link">Ambience</a></li>
+        <li><a href="#lokasi" class="nav-link">Lokasi & Jam Buka</a></li>
+        <li><a href="#order" class="nav-link">Order Online</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-cta-group">
+        <a href="#menu" class="btn-header btn-header-order">
+          <span>Lihat Menu</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#hero" class="mobile-nav-item"><span>Vibe Outlet (Hero)</span> <span>→</span></a>
+      <a href="#menu" class="mobile-nav-item"><span>Menu Unggulan</span> <span>→</span></a>
+      <a href="#ambience" class="mobile-nav-item"><span>Ambience & Keunggulan</span> <span>→</span></a>
+      <a href="#lokasi" class="mobile-nav-item"><span>Lokasi & Rute</span> <span>→</span></a>
+      <a href="#order" class="mobile-nav-item"><span>Order Online</span> <span>→</span></a>
+      <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
+        <a href="https://wa.me/6281234567890?text=Halo%20Mie%20Gakcoin,%20saya%20ingin%20pesan%20mie" target="_blank"
+          class="btn-neon-orange" style="justify-content: center;">
+          <span>WhatsApp Hotline Order</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       SCROLL-DRIVEN HERO SECTION (STICKY CANVAS SCRUBBER)
+       ========================================================================== -->
+  <section class="hero-scroll-container" id="hero">
+    <div class="hero-sticky-frame" id="stickyFrame">
+      <!-- HTML5 Canvas for instant, smooth video frame playback -->
+      <canvas id="hero-canvas"></canvas>
+
+      <!-- Gradient Vignette for readable overlays -->
+      <div class="canvas-overlay-gradient"></div>
+
+      <!-- Scrollytelling Overlay Text Cards -->
+      <div class="hero-overlay-content">
+        <!-- Scene 1 (0% - 20% Scroll) -->
+        <div id="scene1">
+
+        </div>
+
+        <!-- Scene 2 (25% - 45% Scroll) -->
+        <div id="scene2">
+
+        </div>
+
+        <!-- Scene 3 (50% - 65% Scroll) -->
+        <div id="scene3">
+
+        </div>
+
+        <!-- Scene 4 (65% - 100% Scroll: frame_00_delay-0.10s.jpg - frame_49_delay-0.10s.jpg) -->
+        <div id="scene4">
+
+        </div>
+
+        <!-- Scroll Hint -->
+        <div class="scroll-hint" id="scrollHint">
+          <div class="scroll-hint-wheel"></div>
+          <span>Gulir Ke Bawah</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1: FEATURED SIGNATURE MENUS
+       ========================================================================== */
+  -->
+  <section class="section-padding" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-pill badge-neon">Pilihan Terfavorit</span>
+        <h2>Menu Unggulan Mie Gakcoin</h2>
+        <p>Diracik dari mie kenyal premium, bumbu chili oil khas, taburan ayam gurih, dan pendamping dimsum crispy yang
+          selalu bikin ketagihan.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="menu-filter-bar">
+        <button class="filter-btn active" data-category="all">Semua Menu</button>
+        <button class="filter-btn" data-category="mie">Mie Spesial</button>
+        <button class="filter-btn" data-category="dimsum">Dimsum & Sides</button>
+        <button class="filter-btn" data-category="minuman">Minuman Segar</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menuGrid">
+
+        <!-- Menu Item 1 -->
+        <div class="menu-card" data-category="mie">
+          <div class="menu-img-wrap">
+            <img src="mie_spicy.jpg" alt="Mie Gakcoin Asin Gurih" loading="lazy">
+            <span class="menu-badge badge-bestseller">Best Seller ⭐</span>
+          </div>
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h3 class="menu-title">Mie Gakcoin Asin Gurih</h3>
+              <span class="menu-price">Rp 11.500</span>
+            </div>
+            <p class="menu-desc">Mie kenyal gurih asin dengan racikan minyak rempah rahasia, taburan ayam cincang halus
+              melimpah, dan 2 pcs pangsit goreng crispy.</p>
+            <div class="menu-card-footer">
+              <div class="spicy-level-indicator">
+                <span>Level 0 - 5</span> <span>🔥</span>
+              </div>
+              <button class="btn-card-order" onclick="openOrderModal('Mie Gakcoin Asin Gurih', '11.500', 'mie')">Pilih
+                Level</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Item 2 -->
+        <div class="menu-card" data-category="mie">
+          <div class="menu-img-wrap">
+            <img src="mie_spicy.jpg" alt="Mie Gakcoin Manis Pedas" loading="lazy">
+            <span class="menu-badge badge-chili">Super Pedas 🔥</span>
+          </div>
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h3 class="menu-title">Mie Gakcoin Manis Pedas</h3>
+              <span class="menu-price">Rp 12.000</span>
+            </div>
+            <p class="menu-desc">Paduan kecap manis kental gurih berbalut ulekan cabai rawit segar membara. Rasa legit
+              menggigit yang disukai jutaan pecinta pedas.</p>
+            <div class="menu-card-footer">
+              <div class="spicy-level-indicator">
+                <span>Level 1 - 8</span> <span>🔥🔥🔥</span>
+              </div>
+              <button class="btn-card-order" onclick="openOrderModal('Mie Gakcoin Manis Pedas', '12.000', 'mie')">Pilih
+                Level</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Item 3 -->
+        <div class="menu-card" data-category="dimsum">
+          <div class="menu-img-wrap">
+            <img src="udang_keju.jpg" alt="Udang Keju Lumer" loading="lazy">
+            <span class="menu-badge badge-bestseller">Favorit Juara 🧀</span>
+          </div>
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h3 class="menu-title">Udang Keju Lumer (3 pcs)</h3>
+              <span class="menu-price">Rp 11.000</span>
+            </div>
+            <p class="menu-desc">Dimsum udang olahan berbalut tepung roti emas renyah dengan isian keju mozzarella
+              premium yang meleleh mulur saat digigit hangat.</p>
+            <div class="menu-card-footer">
+              <div class="spicy-level-indicator" style="color: var(--accent-yellow)">
+                <span>Crunchy & Cheesy</span>
+              </div>
+              <button class="btn-card-order"
+                onclick="openOrderModal('Udang Keju Lumer (3 pcs)', '11.000', 'dimsum')">Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Item 4 -->
+        <div class="menu-card" data-category="dimsum">
+          <div class="menu-img-wrap">
+            <img src="siomay_steam.jpg" alt="Siomay Udang Ayam Steam" loading="lazy">
+            <span class="menu-badge badge-bestseller">Juicy Steam 🥟</span>
+          </div>
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h3 class="menu-title">Siomay Udang Ayam Steam</h3>
+              <span class="menu-price">Rp 10.500</span>
+            </div>
+            <p class="menu-desc">Dimsum kukus lembut beraroma minyak wijen dengan cincangan daging ayam dan udang segar
+              padat, disajikan dengan saus cocolan spesial.</p>
+            <div class="menu-card-footer">
+              <div class="spicy-level-indicator" style="color: var(--accent-orange)">
+                <span>3 Pcs Jumbo</span>
+              </div>
+              <button class="btn-card-order"
+                onclick="openOrderModal('Siomay Udang Ayam Steam', '10.500', 'dimsum')">Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Item 5 -->
+        <div class="menu-card" data-category="minuman">
+          <div class="menu-img-wrap">
+            <img src="minuman_segar.jpg" alt="Es Jeruk Nipis Telang Sparkle" loading="lazy">
+            <span class="menu-badge badge-bestseller">Segar Pol 🍹</span>
+          </div>
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h3 class="menu-title">Es Jeruk Nipis Telang</h3>
+              <span class="menu-price">Rp 9.000</span>
+            </div>
+            <p class="menu-desc">Minuman mocktail dingin gradasi ungu biru dari seduhan bunga telang asli berpadu
+              perasan jeruk nipis segar. Peredam pedas terbaik!</p>
+            <div class="menu-card-footer">
+              <div class="spicy-level-indicator" style="color: #38bdf8">
+                <span>Dingin Menyegarkan</span>
+              </div>
+              <button class="btn-card-order"
+                onclick="openOrderModal('Es Jeruk Nipis Telang Sparkle', '9.000', 'minuman')">Pesan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Item 6 -->
+        <div class="menu-card" data-category="minuman">
+          <div class="menu-img-wrap">
+            <img src="minuman_segar.jpg" alt="Es Teh Tarik Gakcoin Jumbo" loading="lazy">
+            <span class="menu-badge badge-bestseller">Best Value 🥤</span>
+          </div>
+          <div class="menu-content">
+            <div class="menu-title-row">
+              <h3 class="menu-title">Es Teh Tarik Jumbo</h3>
+              <span class="menu-price">Rp 8.000</span>
+            </div>
+            <p class="menu-desc">Teh tarik otentik dengan busa melimpah, rasa manis gurih creamy susu yang pas di lidah,
+              disajikan dalam gelas porsi besar.</p>
+            <div class="menu-card-footer">
+              <div class="spicy-level-indicator" style="color: #fbbf24">
+                <span>Porsi Jumbo 600ml</span>
+              </div>
+              <button class="btn-card-order"
+                onclick="openOrderModal('Es Teh Tarik Gakcoin Jumbo', '8.000', 'minuman')">Pesan</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: AMBIENCE & HIGHLIGHTS
+       ========================================================================== -->
+  <section class="section-padding ambience-section" id="ambience">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-pill badge-yellow">Kenapa Mie Gakcoin?</span>
+        <h2>Pengalaman Bersantap Terbaik</h2>
+        <p>Bukan sekadar makan mie pedas biasa. Kami menghadirkan atmosfer hangout masa kini yang nyaman, higienis, dan
+          ramah di kantong.</p>
+      </div>
+
+      <!-- 3 Pillar Highlights -->
+      <div class="ambience-grid">
+        <!-- Pillar 1 -->
+        <div class="highlight-card">
+          <div class="highlight-icon-box">🛋️</div>
+          <h3>Area Dine-in Luas & Bersih</h3>
+          <p>Tersedia area indoor ber-AC yang sejuk serta outdoor terrace beratap dengan pencahayaan warm neon yang
+            estetik. Dilengkapi stopkontak di tiap meja dan free WiFi kencang untuk kerja maupun nongkrong bareng kawan.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="highlight-card">
+          <div class="highlight-icon-box">⚡</div>
+          <h3>Pelayanan Cepat & Higienis</h3>
+          <p>Konsep open kitchen higienis berstandar modern. Kru ramah kami dilatih menyajikan pesanan panas mengepul
+            dalam waktu kurang dari 7-10 menit, sehingga kamu tak perlu antre lama saat kelaparan.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="highlight-card">
+          <div class="highlight-icon-box">💰</div>
+          <h3>Harga Ramah Kantong Mahasiswa</h3>
+          <p>Menu lengkap berkualitas bintang lima dengan harga mulai Rp 10 ribuan saja. 100% tersertifikasi halal,
+            bahan sayuran segar setiap hari tanpa bahan pengawet kimiawi berbahaya.</p>
+        </div>
+      </div>
+
+      <!-- Statistics Banner -->
+      <div class="stats-banner">
+        <div class="stat-item">
+          <div class="stat-number">4.9 ★</div>
+          <div class="stat-label">12.500+ Ulasan Google Maps</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2.000+</div>
+          <div class="stat-label">Porsi Terjual Setiap Hari</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Bahan Segar & Bersertifikat Halal</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3 Outlet</div>
+          <div class="stat-label">Strategis di Jabodetabek</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: STORE LOCATOR & OPERATING HOURS
+       ========================================================================== -->
+  <section class="section-padding" id="lokasi">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-pill badge-neon">Temukan Outlet Kami</span>
+        <h2>Lokasi Outlet & Jam Buka</h2>
+        <p>Kunjungi outlet terdekat di kotamu atau rencanakan rute perjalananmu bersama sahabat dan keluarga tercinta.
+        </p>
+      </div>
+
+      <div class="locator-grid">
+        <!-- Left: Outlet Selector & Details -->
+        <div class="outlet-selector-box">
+          <!-- Live Status Badge -->
+          <div class="status-indicator-badge">
+            <span class="status-dot"></span>
+            <span id="liveStatusText">Buka Sekarang • 10.00 - 23.00 WIB</span>
+          </div>
+
+          <!-- Outlet Tabs -->
+          <div class="outlet-nav-tabs">
+            <div class="outlet-tab-item active" onclick="switchOutlet(0)">
+              <div class="outlet-tab-title">
+                <span>Outlet Tebet Raya (Pusat)</span>
+                <span class="badge-pill badge-yellow" style="font-size: 0.7rem; padding: 2px 8px;">Pusat</span>
+              </div>
+              <div class="outlet-tab-desc">Jl. Tebet Timur Dalam Raya No. 42, Jakarta Selatan</div>
+            </div>
+
+            <div class="outlet-tab-item" onclick="switchOutlet(1)">
+              <div class="outlet-tab-title">
+                <span>Outlet Margonda Depok</span>
+                <span class="badge-pill badge-yellow" style="font-size: 0.7rem; padding: 2px 8px;">Kampus UI</span>
+              </div>
+              <div class="outlet-tab-desc">Jl. Margonda Raya No. 288, Pondok Cina, Kota Depok</div>
+            </div>
+
+            <div class="outlet-tab-item" onclick="switchOutlet(2)">
+              <div class="outlet-tab-title">
+                <span>Outlet BSD Serpong</span>
+                <span class="badge-pill badge-yellow" style="font-size: 0.7rem; padding: 2px 8px;">Tangerang</span>
+              </div>
+              <div class="outlet-tab-desc">Ruko Golden Boulevard Blok W No. 12, BSD City</div>
+            </div>
+          </div>
+
+          <!-- Active Outlet Detail Information -->
+          <div class="outlet-detail-info" id="outletInfoContent">
+            <div class="info-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <span id="activeOutletAddress">Jl. Tebet Timur Dalam Raya No. 42, Tebet, Jakarta Selatan 12820</span>
+            </div>
+            <div class="info-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              <span><strong>Jam Operasional:</strong> Setiap Hari 10:00 - 23:00 WIB (Weekend s/d 24:00 WIB)</span>
+            </div>
+            <div class="info-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" />
+              </svg>
+              <span><strong>Fasilitas:</strong> Free High-Speed WiFi, Stopkontak di Meja, Musholla Nyaman, Toilet
+                Bersih, Area Parkir Motor & Mobil Luas.</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="https://maps.google.com" id="btnGmapsLink" target="_blank" class="btn-neon-orange"
+              style="flex: 1; justify-content: center;">
+              <span>Petunjuk Rute Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Google Maps Embed -->
+        <div class="map-embed-wrapper">
+          <iframe id="outletMapIframe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.289759283921!2d106.85292037590895!3d-6.225471993762692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f390098dfeb1%3A0x6e2df456789abcde!2sTebet%20Timur%20Dalam%20Raya%2C%20Jakarta%20Selatan!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Peta Lokasi Outlet Mie Gakcoin">
+          </iframe>
+          <div class="map-actions-bar">
+            <span style="font-size: 0.86rem; color: #cbd5e1;">📍 Pin Lokasi Presisi • Tersedia Akses Ojol &
+              Parkir</span>
+            <span style="font-size: 0.8rem; color: var(--accent-orange); font-weight: 600;">Area Jabodetabek</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: ORDER ONLINE & SOCIAL PROOF
+       ========================================================================== -->
+  <section class="section-padding" id="order" style="background: #111114;">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-pill badge-yellow">Pesan Instan Langsung Diantar</span>
+        <h2>Pesan Online Cepat & Praktis</h2>
+        <p>Mau santap di rumah atau di kantor? Pesan mie pedas favoritmu via aplikasi pengantaran makanan resmi Mie
+          Gakcoin.</p>
+      </div>
+
+      <!-- Online Order Platform Buttons -->
+      <div class="order-platforms-grid">
+        <a href="https://gofood.co.id" target="_blank" class="platform-btn platform-gofood">
+          <div class="platform-icon">🛵</div>
+          <div class="platform-title">GoFood</div>
+          <div class="platform-sub">Pesan Cepat via Gojek</div>
+        </a>
+
+        <a href="https://food.grab.com" target="_blank" class="platform-btn platform-grabfood">
+          <div class="platform-icon">🟢</div>
+          <div class="platform-title">GrabFood</div>
+          <div class="platform-sub">Diskon Promo GrabFood</div>
+        </a>
+
+        <a href="https://shopee.co.id/shopeefood" target="_blank" class="platform-btn platform-shopeefood">
+          <div class="platform-icon">🧡</div>
+          <div class="platform-title">ShopeeFood</div>
+          <div class="platform-sub">Voucher Gratis Ongkir</div>
+        </a>
+
+        <a href="https://wa.me/6281234567890?text=Halo%20Mie%20Gakcoin,%20saya%20ingin%20pesan%20mie" target="_blank"
+          class="platform-btn platform-whatsapp">
+          <div class="platform-icon">💬</div>
+          <div class="platform-title">WhatsApp Order</div>
+          <div class="platform-sub">Pesanan Acara / Catering</div>
+        </a>
+      </div>
+
+      <!-- Social Community & Testimonials -->
+      <div class="section-header" style="margin-top: 40px; margin-bottom: 30px;">
+        <span class="badge-pill badge-neon">#PedesnyaBikinNagih</span>
+        <h2>Kata Pecinta Pedas Indonesia</h2>
+      </div>
+
+      <div class="social-proof-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-user">
+            <div class="user-avatar">SK</div>
+            <div class="user-info">
+              <h4>Sarah Kirana</h4>
+              <span>Mahasiswi UI • Google Review</span>
+            </div>
+          </div>
+          <div class="rating-stars">★★★★★</div>
+          <p class="testimonial-quote">"Pedesnya bener-bener nagih! Kuah minyak bumbu cabainya nempel sempurna di mie.
+            Yang paling gila sih Udang Keju Lumernya, kejunya mulur banget ga pelit!"</p>
+          <span class="social-tag">#MieGakcoinPusat</span>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-user">
+            <div class="user-avatar">RD</div>
+            <div class="user-info">
+              <h4>Reza Danendra</h4>
+              <span>Creative Director • TikTok Reviewer</span>
+            </div>
+          </div>
+          <div class="rating-stars">★★★★★</div>
+          <p class="testimonial-quote">"Vibe outletnya asik banget! Lampu neon estetik, adem, colokan banyak, cocok buat
+            nongkrong malem abis kerja. Harga ramah banget tapi rasa bintang lima."</p>
+          <span class="social-tag">#NongkrongAsik</span>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-user">
+            <div class="user-avatar">AN</div>
+            <div class="user-info">
+              <h4>Adit Nugraha</h4>
+              <span>Food Enthusiast • Instagram</span>
+            </div>
+          </div>
+          <div class="rating-stars">★★★★★</div>
+          <p class="testimonial-quote">"Pelayanannya gercep parah, pesen 4 mangkok mie plus dimsum ga nyampe 10 menit
+            udah di meja panas-panas. Es jeruk telangnya juga seger banget pemadam pedas!"</p>
+          <span class="social-tag">#KulinerMalamJakarta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col" style="grid-column: span 1.3;">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-emblem">🍜</div>
+            <div class="brand-title">
+              <span class="main-text">MIE GAKCOIN</span>
+              <span class="sub-text">Spicy & Delicious</span>
+            </div>
+          </div>
+          <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+            Pelopor mie pedas gurih modern dengan konsep industrial eatery kekinian. Menghadirkan kenikmatan rasa
+            terbaik, atmosfer nongkrong hangat, dan harga ramah setiap hari.
+          </p>
+          <div class="social-links-bar">
+            <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram Mie Gakcoin">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="social-btn" aria-label="TikTok Mie Gakcoin">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+              </svg>
+            </a>
+            <a href="https://wa.me/6281234567890" target="_blank" class="social-btn" aria-label="WhatsApp Hotline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigasi Cepat -->
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="#hero">Vibe Restoran</a></li>
+            <li><a href="#menu">Daftar Menu</a></li>
+            <li><a href="#ambience">Ambience & Fasilitas</a></li>
+            <li><a href="#lokasi">Lokasi & Rute</a></li>
+            <li><a href="#order">Order Online</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Jam Operasional -->
+        <div class="footer-col">
+          <h4>Jam Operasional</h4>
+          <ul>
+            <li>Senin – Kamis: 10:00 – 23:00 WIB</li>
+            <li>Jumat: 13:00 – 23:30 WIB</li>
+            <li>Sabtu – Minggu: 10:00 – 24:00 WIB</li>
+            <li style="color: var(--accent-orange); font-weight: 600;">Dine-in, Takeaway & Online Delivery</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kemitraan & Franchise -->
+        <div class="footer-col">
+          <h4>Kemitraan Franchise</h4>
+          <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">Tertarik membuka cabang Mie Gakcoin di
+            kotamu? Hubungi tim ekspansi kami.</p>
+          <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20kemitraan%20franchise%20Mie%20Gakcoin"
+            target="_blank" class="btn-neon-outline" style="font-size: 0.82rem; padding: 8px 16px;">
+            <span>Info Franchise</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 PT Mie Gakcoin Sejahtera Indonesia. All Rights Reserved. <a href="https://nangsoftcode.web.id/"
+            target="_blank" rel="noopener noreferrer"
+            style="color: var(--accent-orange); text-decoration: underline; text-underline-offset: 4px; transition: color 0.2s ease;"
+            title="Kunjungi Nangsoftcode (buka tab baru)">Nangsoftcode.web.id</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL POPUP: PILIH LEVEL PEDAS & PESAN
+       ========================================================================== -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeOrderModal()" aria-label="Tutup Modal">&times;</button>
+      <span class="badge-pill badge-neon" id="modalBadge">Pilih Level Pedas</span>
+      <h3 style="font-size: 1.4rem; color: #fff; margin-top: 10px;" id="modalMenuTitle">Nama Menu</h3>
+      <p style="font-size: 1.2rem; color: var(--accent-yellow); font-weight: 800; margin-bottom: 14px;"
+        id="modalMenuPrice">Rp 0</p>
+
+      <div id="spicyLevelContainer">
+        <label style="font-size: 0.88rem; color: var(--text-secondary); font-weight: 600;">Tingkat Kepedasan:</label>
+        <div class="modal-spicy-picker">
+          <div class="level-btn selected" onclick="selectSpicyLevel(this, 'Level 0 (Tanpa Cabai)')">Lvl 0</div>
+          <div class="level-btn" onclick="selectSpicyLevel(this, 'Level 1 (Pedas Santai)')">Lvl 1</div>
+          <div class="level-btn" onclick="selectSpicyLevel(this, 'Level 3 (Pedas Pas)')">Lvl 3</div>
+          <div class="level-btn" onclick="selectSpicyLevel(this, 'Level 5 (Pedas Nampol)')">Lvl 5</div>
+          <div class="level-btn" onclick="selectSpicyLevel(this, 'Level 6 (Pedas Juara)')">Lvl 6</div>
+          <div class="level-btn" onclick="selectSpicyLevel(this, 'Level 7 (Membara)')">Lvl 7</div>
+          <div class="level-btn" onclick="selectSpicyLevel(this, 'Level 8 (Super Gakcoin)')">Lvl 8 🔥</div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn-neon-orange" style="justify-content: center; width: 100%;" onclick="confirmOrderWhatsApp()">
+          <span>Pesan via WhatsApp Langsung</span>
+        </button>
+        <a href="#order" onclick="closeOrderModal()" class="btn-neon-outline"
+          style="justify-content: center; width: 100%;">
+          <span>Atau Pesan via Ojol (GoFood / Grab)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CORE JAVASCRIPT: SEQUENCE SCRUBBER, LENIS & INTERACTION LOGIC
+       ========================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ------------------------------------------------------------------------
+         1. FRAME PATTERN DETECTION & ASSET LOADING
+         ------------------------------------------------------------------------ */
+      // Canvas and Hero DOM references
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      const heroContainer = document.getElementById('hero');
+      const stickyFrame = document.getElementById('stickyFrame');
+      const loader = document.getElementById('loader');
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      const scrollHint = document.getElementById('scrollHint');
+
+      // Overlay Scene Cards
+      const scene1 = document.getElementById('scene1');
+      const scene2 = document.getElementById('scene2');
+      const scene3 = document.getElementById('scene3');
+      const scene4 = document.getElementById('scene4');
+
+      // Frame Sequence Configuration
+      let frameUrls = [];
+      let images = [];
+      let loadedCount = 0;
+      let primaryFrameCount = 192; // Scene 1-3 frames (frame_000_delay-0.042s.jpg .. frame_191_delay-0.042s.jpg)
+      let secondaryFrameCount = 50; // Scene 4 frames after #scene3 (frame_00_delay-0.10s.jpg .. frame_49_delay-0.10s.jpg)
+      let totalFrames = primaryFrameCount + secondaryFrameCount;
+      let currentFrameIndex = 0;
+      let targetFrameIndex = 0;
+      let currentZoom = 1.0;
+      let targetZoom = 1.0;
+
+      /**
+       * Detects the frame naming pattern dynamically.
+       * Combines primary Hero sequence (Scenes 1-3) with the secondary Scroll-Driven sequence
+       * (frame_00_delay-0.10s.jpg to frame_49_delay-0.10s.jpg) after #scene3.
+       */
+      async function initializeFrameSequence() {
+        const candidatePatterns = [
+          { prefix: 'frame_', suffix: '_delay-0.042s.jpg', pad: 3, defaultCount: 192 },
+          { prefix: 'frame_', suffix: '_delay-0.041s.jpg', pad: 3, defaultCount: 240 },
+          { prefix: 'frame_', suffix: '.jpg', pad: 3, defaultCount: 200 }
+        ];
+
+        let selectedPattern = candidatePatterns[0];
+
+        // Probe which pattern exists by checking frame 000
+        for (const pattern of candidatePatterns) {
+          const testUrl = `${pattern.prefix}${String(0).padStart(pattern.pad, '0')}${pattern.suffix}`;
+          const exists = await checkImageExists(testUrl);
+          if (exists) {
+            selectedPattern = pattern;
+            break;
+          }
+        }
+
+        primaryFrameCount = selectedPattern.defaultCount;
+        frameUrls = [];
+
+        // 1. Primary sequence (Scenes 1 - 3)
+        for (let i = 0; i < primaryFrameCount; i++) {
+          const filename = `${selectedPattern.prefix}${String(i).padStart(selectedPattern.pad, '0')}${selectedPattern.suffix}`;
+          frameUrls.push(filename);
+        }
+
+        // 2. Secondary sequence after #scene3 (frame_00_delay-0.10s.jpg to frame_49_delay-0.10s.jpg)
+        const secondaryTestUrl = 'frame_00_delay-0.10s.jpg';
+        const hasSecondarySequence = await checkImageExists(secondaryTestUrl);
+        if (hasSecondarySequence) {
+          secondaryFrameCount = 50;
+          for (let j = 0; j < secondaryFrameCount; j++) {
+            const secFilename = `frame_${String(j).padStart(2, '0')}_delay-0.10s.jpg`;
+            frameUrls.push(secFilename);
+          }
+        } else {
+          secondaryFrameCount = 0;
+        }
+
+        totalFrames = frameUrls.length;
+        startPreloading();
+      }
+
+      function checkImageExists(url) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = url;
+        });
+      }
+
+      /**
+       * Smart Progressive Preloading:
+       * Preloads the sequence with progress tracking. Once the initial critical frames
+       * are ready (around 20-25%), the page unlocks for instant silky interaction
+       * while background caching continues seamlessly.
+       */
+      function startPreloading() {
+        let criticalBatch = Math.min(25, totalFrames);
+        let criticalLoaded = 0;
+
+        for (let i = 0; i < totalFrames; i++) {
+          const img = new Image();
+          img.src = frameUrls[i];
+
+          img.onload = () => {
+            loadedCount++;
+            const percent = Math.round((loadedCount / totalFrames) * 100);
+            progressFill.style.width = percent + '%';
+            progressText.textContent = `Menyiapkan Pengalaman Visual (${percent}%)...`;
+
+            if (i < criticalBatch) {
+              criticalLoaded++;
+            }
+
+            // Draw the first frame as soon as frame 0 is ready
+            if (i === 0) {
+              drawCanvas();
+            }
+
+            // Unlock loader once critical frames or total load finishes
+            if (criticalLoaded >= criticalBatch || loadedCount >= totalFrames) {
+              setTimeout(() => {
+                loader.classList.add('hidden');
+                drawCanvas();
+              }, 200);
+            }
+          };
+
+          img.onerror = () => {
+            // Graceful fallback if any frame fails
+            loadedCount++;
+            if (loadedCount >= criticalBatch) {
+              loader.classList.add('hidden');
+            }
+          };
+
+          images[i] = img;
+        }
+      }
+
+      /* ------------------------------------------------------------------------
+         2. RESPONSIVE HIGH-DPI CANVAS RENDERING (NO FLICKER, COVER FIT)
+         ------------------------------------------------------------------------ */
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = stickyFrame.getBoundingClientRect();
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+
+        drawCanvas();
+      }
+
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+      window.addEventListener('orientationchange', resizeCanvas, { passive: true });
+
+      /**
+       * Draws the current frame onto the canvas using aspect-ratio cover.
+       * Fills the canvas with background color (#0f0f11) before drawing each frame to prevent flicker.
+       */
+      function drawCanvas() {
+        const cw = canvas.width;
+        const ch = canvas.height;
+        if (!cw || !ch) return;
+
+        // 1. Fill canvas with background color before drawing each frame to prevent flicker
+        ctx.fillStyle = '#0f0f11';
+        ctx.fillRect(0, 0, cw, ch);
+
+        const frameIdx = Math.min(Math.max(Math.round(currentFrameIndex), 0), totalFrames - 1);
+        const img = images[frameIdx];
+
+        if (!img || !img.complete || img.naturalWidth === 0) {
+          // If the requested frame is still decoding, find the closest available loaded frame
+          let fallbackImg = null;
+          for (let offset = 1; offset < 20; offset++) {
+            if (images[frameIdx - offset] && images[frameIdx - offset].complete) {
+              fallbackImg = images[frameIdx - offset];
+              break;
+            }
+            if (images[frameIdx + offset] && images[frameIdx + offset].complete) {
+              fallbackImg = images[frameIdx + offset];
+              break;
+            }
+          }
+          if (!fallbackImg && images[0] && images[0].complete) {
+            fallbackImg = images[0];
+          }
+          if (fallbackImg) {
+            renderImageToCanvas(fallbackImg, cw, ch);
+          }
+          return;
+        }
+
+        renderImageToCanvas(img, cw, ch);
+      }
+
+      function renderImageToCanvas(img, cw, ch) {
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+        const canvasAspect = cw / ch;
+        const imgAspect = iw / ih;
+
+        let drawW, drawH, drawX, drawY;
+
+        if (canvasAspect > imgAspect) {
+          drawW = cw;
+          drawH = cw / imgAspect;
+          drawX = 0;
+          drawY = (ch - drawH) / 2;
+        } else {
+          drawH = ch;
+          drawW = ch * imgAspect;
+          // Mobile Portrait Optimization:
+          // Keep subject (restaurant entrance and glowing neon sign) nicely centered
+          drawX = (cw - drawW) * 0.52;
+          drawY = (ch - drawH) / 2;
+        }
+
+        ctx.save();
+
+        // Camera Focus / Scale Cue (Micro-zoom on primary exterior sequence):
+        if (Math.round(currentFrameIndex) < primaryFrameCount && currentZoom > 1.0001) {
+          const originX = cw * 0.52;
+          const originY = ch * 0.38;
+          ctx.translate(originX, originY);
+          ctx.scale(currentZoom, currentZoom);
+          ctx.translate(-originX, -originY);
+        }
+
+        ctx.drawImage(img, drawX, drawY, drawW, drawH);
+        ctx.restore();
+      }
+
+      /* ------------------------------------------------------------------------
+         3. SCROLL-BOUND SCRUBBING & OVERLAY PROGRESSION TIMELINE
+         ------------------------------------------------------------------------ */
+      function updateScrollTimeline() {
+        const containerRect = heroContainer.getBoundingClientRect();
+        const maxScroll = heroContainer.offsetHeight - window.innerHeight;
+        const scrolled = -containerRect.top;
+
+        // Calculate normalized scroll progress [0.0 to 1.0]
+        let progress = 0;
+        if (maxScroll > 0) {
+          progress = Math.min(Math.max(scrolled / maxScroll, 0), 1);
+        }
+
+        // Target Frame calculation:
+        // 0% - 65% Scroll -> Primary sequence (Scenes 1-3: frame_000 .. frame_191)
+        // 65% - 100% Scroll -> Secondary sequence after #scene3 (Scene 4: frame_00_delay-0.10s.jpg .. frame_49_delay-0.10s.jpg)
+        const scene3EndRatio = secondaryFrameCount > 0 ? 0.65 : 1.0;
+
+        if (secondaryFrameCount > 0 && progress > scene3EndRatio) {
+          const secProgress = (progress - scene3EndRatio) / (1.0 - scene3EndRatio);
+          targetFrameIndex = primaryFrameCount + secProgress * (secondaryFrameCount - 1);
+          targetZoom = 1.0;
+        } else {
+          const priProgress = scene3EndRatio > 0 ? (progress / scene3EndRatio) : 0;
+          targetFrameIndex = priProgress * (primaryFrameCount - 1);
+
+          // Micro-zoom calculation during primary sequence:
+          if (priProgress < 0.40) {
+            targetZoom = 1.0;
+          } else if (priProgress <= 0.80) {
+            const zoomProgress = (priProgress - 0.40) / (0.80 - 0.40);
+            targetZoom = 1.0 + (0.08 * zoomProgress);
+          } else {
+            targetZoom = 1.08;
+          }
+        }
+
+        // Overlay Scenes progression:
+        // Scene 1: Scroll 0% – 20%
+        // Scene 2: Scroll 25% – 45%
+        // Scene 3: Scroll 50% – 65%
+        // Scene 4 (after #scene3): Scroll 65% – 100%
+        if (progress >= 0.02 && progress <= 0.20) {
+          scene1.classList.add('active');
+        } else {
+          scene1.classList.remove('active');
+        }
+
+        if (progress >= 0.25 && progress <= 0.45) {
+          scene2.classList.add('active');
+        } else {
+          scene2.classList.remove('active');
+        }
+
+        if (progress >= 0.50 && progress <= 0.65) {
+          scene3.classList.add('active');
+        } else {
+          scene3.classList.remove('active');
+        }
+
+        if (scene4) {
+          if (progress > 0.65 && progress <= 0.98) {
+            scene4.classList.add('active');
+          } else {
+            scene4.classList.remove('active');
+          }
+        }
+
+        // Hide scroll hint once user starts scrolling
+        if (progress > 0.04) {
+          scrollHint.style.opacity = '0';
+        } else {
+          scrollHint.style.opacity = '1';
+        }
+      }
+
+      /* ------------------------------------------------------------------------
+         4. INERTIAL SMOOTH SCRUBBING (LERP ANIMATION LOOP)
+         ------------------------------------------------------------------------ */
+      let isLoopRunning = true;
+      function renderLoop() {
+        // Inertial lerp calculation for buttery smooth frame-by-frame scrub
+        const frameDiff = targetFrameIndex - currentFrameIndex;
+        const zoomDiff = targetZoom - currentZoom;
+
+        if (Math.abs(frameDiff) > 0.01 || Math.abs(zoomDiff) > 0.0005) {
+          currentFrameIndex += frameDiff * 0.16;
+          currentZoom += zoomDiff * 0.12;
+          drawCanvas();
+        }
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      /* ------------------------------------------------------------------------
+         5. LENIS SMOOTH SCROLL INTEGRATION WITH NATIVE FALLBACK
+         ------------------------------------------------------------------------ */
+      let lenis = null;
+      if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          smoothTouch: true,
+          touchMultiplier: 1.5
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', () => {
+          updateScrollTimeline();
+          handleHeaderScroll();
+        });
+      } else {
+        // Fallback for native scroll listener
+        window.addEventListener('scroll', () => {
+          updateScrollTimeline();
+          handleHeaderScroll();
+        }, { passive: true });
+      }
+
+      /* ------------------------------------------------------------------------
+         6. NAVBAR SCROLL & MOBILE MENU INTERACTION
+         ------------------------------------------------------------------------ */
+      const header = document.getElementById('mainHeader');
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      function handleHeaderScroll() {
+        if (window.scrollY > 40) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('open');
+        mobileDrawer.classList.toggle('active');
+      });
+
+      // Close mobile drawer when clicking any link
+      document.querySelectorAll('.mobile-nav-item').forEach(item => {
+        item.addEventListener('click', () => {
+          hamburgerBtn.classList.remove('open');
+          mobileDrawer.classList.remove('active');
+        });
+      });
+
+      /* ------------------------------------------------------------------------
+         7. MENU FILTER TABS
+         ------------------------------------------------------------------------ */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const menuCards = document.querySelectorAll('.menu-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const category = btn.getAttribute('data-category');
+          menuCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      /* ------------------------------------------------------------------------
+         8. STORE LOCATOR TAB SWITCHING
+         ------------------------------------------------------------------------ */
+      const outletData = [
+        {
+          name: 'Outlet Tebet Raya (Pusat)',
+          address: 'Jl. Tebet Timur Dalam Raya No. 42, Tebet, Jakarta Selatan 12820',
+          mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.289759283921!2d106.85292037590895!3d-6.225471993762692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f390098dfeb1%3A0x6e2df456789abcde!2sTebet%20Timur%20Dalam%20Raya%2C%20Jakarta%20Selatan!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid',
+          gmapsLink: 'https://maps.google.com/?q=Mie+Gakcoin+Tebet+Jakarta'
+        },
+        {
+          name: 'Outlet Margonda Depok',
+          address: 'Jl. Margonda Raya No. 288, Pondok Cina, Beji, Kota Depok, Jawa Barat 16424',
+          mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.176465849842!2d106.8315189759103!3d-6.371239993618872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec086c878f5f%3A0x58a5c4e9760775d7!2sJl.%20Margonda%20Raya%2C%20Pondok%20Cina%2C%20Depok!5e0!3m2!1sid!2sid!4v1700000000001!5m2!1sid!2sid',
+          gmapsLink: 'https://maps.google.com/?q=Mie+Gakcoin+Margonda+Depok'
+        },
+        {
+          name: 'Outlet BSD Serpong',
+          address: 'Ruko Golden Boulevard Blok W No. 12, Jl. Pahlawan Seribu, BSD City, Tangerang Selatan 15322',
+          mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.9818816515865!2d106.66318997590933!3d-6.270034993718706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb27f003eb8b%3A0x5243b60388d011f!2sRuko%20Golden%20Boulevard%2C%20BSD%20City!5e0!3m2!1sid!2sid!4v1700000000002!5m2!1sid!2sid',
+          gmapsLink: 'https://maps.google.com/?q=Mie+Gakcoin+BSD+Serpong'
+        }
+      ];
+
+      window.switchOutlet = function (index) {
+        const tabs = document.querySelectorAll('.outlet-tab-item');
+        tabs.forEach((tab, i) => {
+          if (i === index) tab.classList.add('active');
+          else tab.classList.remove('active');
+        });
+
+        const selected = outletData[index];
+        document.getElementById('activeOutletAddress').textContent = selected.address;
+        document.getElementById('outletMapIframe').src = selected.mapUrl;
+        document.getElementById('btnGmapsLink').href = selected.gmapsLink;
+      };
+
+      /* ------------------------------------------------------------------------
+         9. LIVE OPERATIONAL STATUS (HOURS DETECTION)
+         ------------------------------------------------------------------------ */
+      function checkLiveOperationalHours() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const statusElement = document.getElementById('liveStatusText');
+
+        // Outlet open from 10:00 to 23:00 (or 24:00 on weekend)
+        const isWeekend = (now.getDay() === 0 || now.getDay() === 6);
+        const closingHour = isWeekend ? 24 : 23;
+
+        if (currentHour >= 10 && currentHour < closingHour) {
+          statusElement.innerHTML = `Buka Sekarang • 10.00 - ${closingHour}.00 WIB`;
+        } else {
+          statusElement.innerHTML = `Tutup • Buka Kembali Pukul 10.00 WIB`;
+          document.querySelector('.status-indicator-badge').style.borderColor = 'rgba(230, 57, 70, 0.4)';
+          document.querySelector('.status-indicator-badge').style.color = '#ff5263';
+          document.querySelector('.status-dot').style.background = '#ff5263';
+          document.querySelector('.status-dot').style.boxShadow = '0 0 10px #ff5263';
+        }
+      }
+      checkLiveOperationalHours();
+
+      /* ------------------------------------------------------------------------
+         10. ORDER MODAL & WHATSAPP GENERATOR
+         ------------------------------------------------------------------------ */
+      let currentOrderMenu = '';
+      let currentOrderPrice = '';
+      let selectedSpicy = 'Level 1 (Pedas Santai)';
+
+      window.openOrderModal = function (title, price, type) {
+        currentOrderMenu = title;
+        currentOrderPrice = price;
+
+        document.getElementById('modalMenuTitle').textContent = title;
+        document.getElementById('modalMenuPrice').textContent = 'Rp ' + price;
+
+        const spicyContainer = document.getElementById('spicyLevelContainer');
+        const badge = document.getElementById('modalBadge');
+
+        if (type === 'mie') {
+          spicyContainer.style.display = 'block';
+          badge.textContent = 'Pilih Level Pedas';
+        } else {
+          spicyContainer.style.display = 'none';
+          badge.textContent = 'Pilihan Menu';
+          selectedSpicy = 'Standar';
+        }
+
+        document.getElementById('orderModal').classList.add('open');
+      };
+
+      window.closeOrderModal = function () {
+        document.getElementById('orderModal').classList.remove('open');
+      };
+
+      window.selectSpicyLevel = function (el, levelText) {
+        document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedSpicy = levelText;
+      };
+
+      window.confirmOrderWhatsApp = function () {
+        const text = encodeURIComponent(`Halo Mie Gakcoin, saya ingin order:\n• Menu: ${currentOrderMenu}\n• Varian: ${selectedSpicy}\n• Harga: Rp ${currentOrderPrice}\nMohon info ketersediaan dan cara pesan antarnya ya. Terima kasih!`);
+        window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+        closeOrderModal();
+      };
+
+      // Close modal on backdrop click
+      document.getElementById('orderModal').addEventListener('click', (e) => {
+        if (e.target.id === 'orderModal') {
+          closeOrderModal();
+        }
+      });
+
+      /* ------------------------------------------------------------------------
+         11. STARTUP INITIALIZATION
+         ------------------------------------------------------------------------ */
+      window.addEventListener('DOMContentLoaded', () => {
+        resizeCanvas();
+        initializeFrameSequence();
+        updateScrollTimeline();
+        handleHeaderScroll();
+        requestAnimationFrame(renderLoop);
+      });
+
+    })();
+  </script>
+</body>
+
+</html>
