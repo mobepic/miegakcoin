@@ -362,6 +362,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn-header-order {
@@ -388,6 +390,7 @@
       border-radius: 10px;
       padding: 10px;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     @media (min-width: 900px) {
@@ -419,23 +422,26 @@
 
     /* Mobile Menu Drawer */
     .mobile-drawer {
-      position: fixed;
-      top: 72px;
+      position: absolute;
+      top: 100%;
       left: 0;
       width: 100%;
-      background: rgba(15, 15, 17, 0.96);
+      background: rgba(15, 15, 17, 0.97);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
       padding: 24px 20px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      transform: translateY(-120%);
+      gap: 16px;
+      transform: translateY(-10px);
       opacity: 0;
       visibility: hidden;
       transition: var(--transition-smooth);
       z-index: 99;
+      max-height: calc(100dvh - 100%);
+      overflow-y: auto;
     }
 
     .mobile-drawer.active {
@@ -518,14 +524,18 @@
       position: absolute;
       max-width: 580px;
       width: 100%;
-      padding: 30px;
+      padding: 32px 28px;
       text-align: center;
       opacity: 0;
       transform: translateY(24px) scale(0.97);
       transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(251, 133, 0, 0.08);
+      background: rgba(18, 18, 22, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(251, 133, 0, 0.1);
     }
 
     .scene-card.active {
@@ -864,7 +874,7 @@
 
     .ambience-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 28px;
       margin-bottom: 50px;
     }
@@ -1165,7 +1175,7 @@
     /* Social Testimonials Carousel/Grid */
     .social-proof-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
     }
 
@@ -1385,6 +1395,388 @@
       box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
     }
 
+    /* ==========================================================================
+       MOBILE RESPONSIVE ENHANCEMENTS (HP & TABLET OPTIMIZATIONS)
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .container {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .section-padding {
+        padding: 70px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      /* Scrollytelling hero: more dynamic & thumb-friendly scroll height on touchscreens */
+      .hero-scroll-container {
+        height: 360vh;
+      }
+
+      .canvas-overlay-gradient {
+        background: radial-gradient(circle at 50% 50%, rgba(15, 15, 17, 0.35) 0%, rgba(15, 15, 17, 0.85) 80%, #0f0f11 100%),
+          linear-gradient(to bottom, rgba(15, 15, 17, 0.82) 0%, rgba(15, 15, 17, 0.25) 30%, rgba(15, 15, 17, 0.4) 70%, #0f0f11 100%);
+      }
+
+      .scene-card {
+        max-width: calc(100% - 24px);
+        padding: 24px 20px;
+        border-radius: 20px;
+        background: rgba(18, 18, 22, 0.86);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(251, 133, 0, 0.1);
+      }
+
+      .scene-card h2 {
+        font-size: clamp(1.45rem, 5.2vw, 1.9rem);
+        margin: 10px 0 8px;
+        line-height: 1.25;
+      }
+
+      .scene-card p {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 16px;
+      }
+
+      .scene-cta-buttons {
+        gap: 10px;
+      }
+
+      .btn-neon-orange,
+      .btn-neon-outline {
+        padding: 11px 20px;
+        font-size: 0.88rem;
+      }
+
+      .scroll-hint {
+        bottom: 18px;
+        font-size: 0.72rem;
+        gap: 5px;
+      }
+
+      .scroll-hint-wheel {
+        width: 20px;
+        height: 30px;
+      }
+
+      /* Sections & Headers */
+      .section-padding {
+        padding: 60px 0;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+        margin-top: 8px;
+        margin-bottom: 10px;
+      }
+
+      .section-header p {
+        font-size: 0.92rem;
+      }
+
+      /* Ambience & Highlights */
+      .ambience-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .highlight-card {
+        padding: 24px 20px;
+        border-radius: 18px;
+      }
+
+      .highlight-icon-box {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 16px;
+      }
+
+      .highlight-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .highlight-card p {
+        font-size: 0.88rem;
+      }
+
+      /* Store Locator */
+      .locator-grid {
+        gap: 20px;
+      }
+
+      .outlet-selector-box {
+        padding: 20px 16px;
+        border-radius: 18px;
+        gap: 16px;
+      }
+
+      .outlet-tab-item {
+        padding: 14px;
+      }
+
+      .outlet-detail-info {
+        padding: 14px;
+        font-size: 0.84rem;
+      }
+
+      .map-embed-wrapper {
+        min-height: 280px;
+        border-radius: 18px;
+      }
+
+      .map-actions-bar {
+        padding: 12px 14px;
+        font-size: 0.78rem;
+      }
+
+      /* Footer */
+      .site-footer {
+        padding: 45px 0 25px;
+      }
+
+      .footer-grid {
+        gap: 28px;
+        margin-bottom: 35px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      /* Header Bar */
+      .site-header {
+        padding: 10px 0;
+      }
+
+      .site-header.scrolled {
+        padding: 8px 0;
+      }
+
+      .brand-logo {
+        gap: 8px;
+      }
+
+      .logo-emblem {
+        width: 34px;
+        height: 34px;
+        font-size: 1.05rem;
+        border-radius: 9px;
+        flex-shrink: 0;
+      }
+
+      .brand-title .main-text {
+        font-size: 1.05rem;
+      }
+
+      .brand-title .sub-text {
+        font-size: 0.58rem;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-cta-group {
+        gap: 8px;
+      }
+
+      .btn-header-order {
+        padding: 7px 13px;
+        font-size: 0.8rem;
+        gap: 5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .btn-header-order svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .hamburger-btn {
+        width: 38px;
+        height: 38px;
+        padding: 9px;
+        border-radius: 9px;
+        flex-shrink: 0;
+      }
+
+      /* Mobile Drawer */
+      .mobile-drawer {
+        padding: 18px 16px;
+        gap: 12px;
+      }
+
+      .mobile-drawer a {
+        font-size: 0.98rem;
+        padding: 9px 0;
+      }
+
+      /* Menu filter bar */
+      .menu-filter-bar {
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .filter-btn {
+        padding: 8px 14px;
+        font-size: 0.82rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .menu-card {
+        border-radius: 18px;
+      }
+
+      .menu-img-wrap {
+        height: 190px;
+      }
+
+      .menu-content {
+        padding: 18px;
+      }
+
+      .menu-title {
+        font-size: 1.1rem;
+      }
+
+      .menu-price {
+        font-size: 1.1rem;
+      }
+
+      .menu-desc {
+        font-size: 0.84rem;
+        margin-bottom: 14px;
+      }
+
+      /* Stats Banner: Symmetric 2x2 grid */
+      .stats-banner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding: 20px 14px;
+        border-radius: 18px;
+      }
+
+      .stat-number {
+        font-size: 1.6rem;
+      }
+
+      .stat-label {
+        font-size: 0.78rem;
+      }
+
+      /* Order Platforms: Clean 2x2 grid */
+      .order-platforms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 36px;
+      }
+
+      .platform-btn {
+        padding: 16px 10px;
+        border-radius: 14px;
+        gap: 6px;
+      }
+
+      .platform-icon {
+        font-size: 1.6rem;
+      }
+
+      .platform-title {
+        font-size: 0.95rem;
+      }
+
+      .platform-sub {
+        font-size: 0.72rem;
+      }
+
+      .social-proof-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .testimonial-card {
+        padding: 20px 16px;
+        border-radius: 16px;
+      }
+
+      /* Modal */
+      .modal-card {
+        padding: 22px 18px;
+        border-radius: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-spicy-picker {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .level-btn {
+        padding: 8px 4px;
+        font-size: 0.78rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scene-card {
+        padding: 20px 15px;
+      }
+
+      .scene-card h2 {
+        font-size: 1.35rem;
+      }
+
+      .scene-card p {
+        font-size: 0.82rem;
+        margin-bottom: 14px;
+      }
+
+      .scene-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+      }
+
+      .scene-cta-buttons .btn-neon-orange,
+      .scene-cta-buttons .btn-neon-outline {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .brand-title .main-text {
+        font-size: 0.95rem;
+      }
+
+      .btn-header-order {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+    }
+
     /* Accessibility reduced motion */
     @media (prefers-reduced-motion: reduce) {
 
@@ -1469,7 +1861,7 @@
       <a href="#lokasi" class="mobile-nav-item"><span>Lokasi & Rute</span> <span>→</span></a>
       <a href="#order" class="mobile-nav-item"><span>Order Online</span> <span>→</span></a>
       <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
-        <a href="https://wa.me/6281234567890?text=Halo%20Mie%20Gakcoin,%20saya%20ingin%20pesan%20mie" target="_blank"
+        <a href="https://wa.me/6287701495432?text=Halo%20Mie%20Gakcoin,%20saya%20ingin%20pesan%20mie" target="_blank"
           class="btn-neon-orange" style="justify-content: center;">
           <span>WhatsApp Hotline Order</span>
         </a>
@@ -1490,22 +1882,22 @@
 
       <!-- Scrollytelling Overlay Text Cards -->
       <div class="hero-overlay-content">
-        <!-- Scene 1 (0% - 20% Scroll) -->
+        <!-- Scene 1 (0% - 22% Scroll: Intro & Hero Hook) -->
         <div id="scene1">
 
         </div>
 
-        <!-- Scene 2 (25% - 45% Scroll) -->
+        <!-- Scene 2 (26% - 48% Scroll: Ambience & Hangout Spot) -->
         <div id="scene2">
 
         </div>
 
-        <!-- Scene 3 (50% - 65% Scroll) -->
+        <!-- Scene 3 (52% - 72% Scroll: Signature Dimsum) -->
         <div id="scene3">
 
         </div>
 
-        <!-- Scene 4 (65% - 100% Scroll: frame_00_delay-0.10s.jpg - frame_49_delay-0.10s.jpg) -->
+        <!-- Scene 4 (76% - 98% Scroll: Call To Action & Outlet) -->
         <div id="scene4">
 
         </div>
@@ -1878,7 +2270,7 @@
           <div class="platform-sub">Voucher Gratis Ongkir</div>
         </a>
 
-        <a href="https://wa.me/6281234567890?text=Halo%20Mie%20Gakcoin,%20saya%20ingin%20pesan%20mie" target="_blank"
+        <a href="https://wa.me/6287701495432?text=Halo%20Mie%20Gakcoin,%20saya%20ingin%20pesan%20mie" target="_blank"
           class="platform-btn platform-whatsapp">
           <div class="platform-icon">💬</div>
           <div class="platform-title">WhatsApp Order</div>
@@ -1970,7 +2362,7 @@
                 <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
               </svg>
             </a>
-            <a href="https://wa.me/6281234567890" target="_blank" class="social-btn" aria-label="WhatsApp Hotline">
+            <a href="https://wa.me/6287701495432" target="_blank" class="social-btn" aria-label="WhatsApp Hotline">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path
                   d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -2007,7 +2399,7 @@
           <h4>Kemitraan Franchise</h4>
           <p style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 12px;">Tertarik membuka cabang Mie Gakcoin di
             kotamu? Hubungi tim ekspansi kami.</p>
-          <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20kemitraan%20franchise%20Mie%20Gakcoin"
+          <a href="https://wa.me/6287701495432?text=Halo,%20saya%20tertarik%20kemitraan%20franchise%20Mie%20Gakcoin"
             target="_blank" class="btn-neon-outline" style="font-size: 0.82rem; padding: 8px 16px;">
             <span>Info Franchise</span>
           </a>
@@ -2341,30 +2733,30 @@
         }
 
         // Overlay Scenes progression:
-        // Scene 1: Scroll 0% – 20%
-        // Scene 2: Scroll 25% – 45%
-        // Scene 3: Scroll 50% – 65%
-        // Scene 4 (after #scene3): Scroll 65% – 100%
-        if (progress >= 0.02 && progress <= 0.20) {
+        // Scene 1: Scroll 0% – 22% (Active immediately on initial page load)
+        // Scene 2: Scroll 26% – 48%
+        // Scene 3: Scroll 52% – 72%
+        // Scene 4 (after #scene3): Scroll 76% – 98%
+        if (progress >= 0 && progress <= 0.22) {
           scene1.classList.add('active');
         } else {
           scene1.classList.remove('active');
         }
 
-        if (progress >= 0.25 && progress <= 0.45) {
+        if (progress >= 0.26 && progress <= 0.48) {
           scene2.classList.add('active');
         } else {
           scene2.classList.remove('active');
         }
 
-        if (progress >= 0.50 && progress <= 0.65) {
+        if (progress >= 0.52 && progress <= 0.72) {
           scene3.classList.add('active');
         } else {
           scene3.classList.remove('active');
         }
 
         if (scene4) {
-          if (progress > 0.65 && progress <= 0.98) {
+          if (progress >= 0.76 && progress <= 0.98) {
             scene4.classList.add('active');
           } else {
             scene4.classList.remove('active');
@@ -2406,7 +2798,7 @@
           duration: 1.2,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           smoothWheel: true,
-          smoothTouch: true,
+          smoothTouch: false, // Snappy native momentum scroll on mobile phones
           touchMultiplier: 1.5
         });
 
@@ -2580,8 +2972,9 @@
       };
 
       window.confirmOrderWhatsApp = function () {
-        const text = encodeURIComponent(`Halo Mie Gakcoin, saya ingin order:\n• Menu: ${currentOrderMenu}\n• Varian: ${selectedSpicy}\n• Harga: Rp ${currentOrderPrice}\nMohon info ketersediaan dan cara pesan antarnya ya. Terima kasih!`);
-        window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+        const text = encodeURIComponent(`Halo Danang, saya ingin dibuatkan website bisa?`);
+        //const text = encodeURIComponent(`Halo Mie Gakcoin, saya ingin order:\n• Menu: ${currentOrderMenu}\n• Varian: ${selectedSpicy}\n• Harga: Rp ${currentOrderPrice}\nMohon info ketersediaan dan cara pesan antarnya ya. Terima kasih!`);
+        window.open(`https://wa.me/6287701495432?text=${text}`, '_blank');
         closeOrderModal();
       };
 
